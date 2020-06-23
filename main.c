@@ -62,6 +62,9 @@ void backline(size_t *al, int *linepos, char **src) {
 }
 
 void type(char ch, char *src, struct letter *dest, size_t srclen) {
+    if (ch == '.') { // forbidding the usage of the char '.'
+        return;      // it is used as placeholder in the first line.
+    }
     int y,x;
     for (size_t i=0;i<srclen;i++) {
         if (ch==src[i]) {
@@ -143,7 +146,7 @@ int main(void) {
 
     int y,x;
     getyx(stdscr, y,x);
-    size_t  activeline = 0;
+    size_t activeline = 0;
 
     while (last_key != ESCAPE) {
         last_key = getch();
