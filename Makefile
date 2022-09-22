@@ -1,10 +1,10 @@
 CFLAGS=-lncurses -Wextra -Wpadded -O0 -g3
 
 build:
-	cc main.c $(CFLAGS)
+	cc main.c -o letter $(CFLAGS)
 run:
-	./a.out
+	./letter
 debug:
-	gdb a.out
+	gdb letter
 valgrind:
-	valgrind --tool=memcheck -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./a.out
+	valgrind --tool=memcheck -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./letter
